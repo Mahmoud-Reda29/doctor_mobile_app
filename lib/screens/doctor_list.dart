@@ -70,7 +70,7 @@ class _DoctorListState extends State<DoctorList> {
                       color: Color(0xffffd500),
                     ),
                     Text(
-                      '4.9',
+                      doctor.rating.toString(),
                       style: TextStyle(fontSize: 18, color: Color(0x770000000)),
                     )
                   ],
@@ -84,7 +84,7 @@ class _DoctorListState extends State<DoctorList> {
                 ),
                 Row(
                   children: [
-                    Icon(Icons.add_location),
+                    Icon(Icons.location_on),
                     Text(
                       doctor.address,
                       style: TextStyle(fontSize: 18, color: Color(0x770000000)),
@@ -98,9 +98,10 @@ class _DoctorListState extends State<DoctorList> {
       ),
     );
   }
-
   Widget bottomNavBar() {
     return BottomNavigationBar(
+      //backgroundColor:Color(0xff07da5f) ,
+      selectedItemColor: Color(0xff07da5f),
       currentIndex: _selectedItem,
       onTap: (index) {
         setState(() {
@@ -128,7 +129,6 @@ class _DoctorListState extends State<DoctorList> {
       ],
     );
   }
-
   Widget appBar() {
     return AppBar(
       title: Text('Doctor List'),
