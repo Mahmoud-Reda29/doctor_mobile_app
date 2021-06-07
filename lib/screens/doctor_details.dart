@@ -1,14 +1,15 @@
 import "package:flutter/material.dart";
 import 'package:flutter_app_4/models/doctor.dart';
+import 'package:flutter_app_4/screens/doctor_list.dart';
+import 'package:flutter_app_4/screens/confirmation.dart';
 class DoctorDetails extends StatelessWidget {
   Doctor doctor;
-
   DoctorDetails(this.doctor);
   int _selectedItem = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(),
+      appBar: appBar(context),
       bottomNavigationBar: bottomNavBar(),
       body: Column(
         children: [
@@ -146,7 +147,10 @@ class DoctorDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (_) => confirmation()));
+                    },
                     child: Text(
                       "Request",
                       style: TextStyle(fontSize: 14),
@@ -173,6 +177,7 @@ class DoctorDetails extends StatelessWidget {
         ],
       ),
     );
+
   }
   Widget bottomNavBar() {
     return BottomNavigationBar(
@@ -205,12 +210,15 @@ class DoctorDetails extends StatelessWidget {
       ],
     );
   }
-  Widget appBar() {
+  Widget appBar(BuildContext context) {
     return AppBar(
-      title: Text('Doctor List'),
+      title: Text('Doctor Details'),
       centerTitle: true,
       leading: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (_) => DoctorList()));
+        },
         icon: Icon(
           Icons.arrow_back,
           color: Colors.white,
